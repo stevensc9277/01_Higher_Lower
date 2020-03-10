@@ -13,8 +13,6 @@ def num_check(question, low, high):
         except ValueError:
             print(error)
 
-random = 7
-import random
-chosen = print(random)
-low_num = num_check("Enter a number between 1 and 10. ", 1, 10)
-high_num = num_check("Enter another number between 1 and 10. ", 1, 10)
+# To do
+# Check a lowest is an integer (any integer)
+# Check that highest is more than lowest (lower bound only)
