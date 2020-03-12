@@ -12,10 +12,10 @@ def num_check(question, low=None, high=None):
     if low is not None and high is not None:
             error = "Please enter an integer between {} and {} " \
                     "(inclusive)".format(low, high)
-    elif low is not None and high is not None:
+    elif low is not None and high is None:
         error = "Please enter an integer that is more than or " \
                 "equal to {}".format(low)
-    elif low is None and high is  not None:
+    elif low is None and high is not None:
         error = "Please enter an integer that is less than or " \
                 "equal to {}".format(high)
     else:
@@ -43,7 +43,13 @@ def num_check(question, low=None, high=None):
 
 # Main routine
 low_num = num_check("Low number: ")
-high_num = num_check("High number: ", low_num + 1)
-rounds = num_check("Rounds: ", 1)
-guess = num_check("Guess :", low_num, high_num)
+print()
 
+high_num = num_check("High number: ", low_num + 1)
+print()
+
+rounds = num_check("Rounds: ", 1)
+print()
+
+guess = num_check("Guess :", low_num, high_num)
+print()
