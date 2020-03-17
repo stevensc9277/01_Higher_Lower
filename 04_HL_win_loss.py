@@ -35,5 +35,4 @@ while guess != SECRET and guesses_left >= 1:
     elif guess > SECRET:
         print("Try a lower number.")
     else:
-        print("Congratulations! You found the secret number.")
-    print()
+        print()
