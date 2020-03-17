@@ -6,7 +6,7 @@ guess = ""
 
 while guess != SECRET:
 
-    guess = int(input("Guess: "))  # replace this with function call in due corse
+    guess = int(input("Guess: "))  # replace this with function call in due course
 
     if guess < SECRET:
         print("Too low, try a  higher number")
@@ -14,3 +14,4 @@ while guess != SECRET:
         print("Too high, try a lower number")
     else:
         print("Congratulations! You found the secret number")
+    print()
