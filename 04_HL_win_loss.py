@@ -22,16 +22,15 @@ while guess != SECRET and guesses_left >= 1:
 
     # If user has guesses left...
     if guesses_left >= 1:
-        print()
+        print("You have {} guesses left".format(guesses_left))
     else:
-        print("Sorry you have run out of guesses. You lose")
+        print("Sorry you have run out of guesses. You lose ┐(￣ー￣)┌")
         break
 
     if guess < SECRET:
-        print("Too low, try a  higher number")
+        print("Try a  higher number.")
     elif guess > SECRET:
-        print("Too high, try a lower number")
+        print("Try a lower number.")
     else:
-        print("Congratulations! You found the secret number")
+        print("Congratulations! You found the secret number.")
     print()
-
