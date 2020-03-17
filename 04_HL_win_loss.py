@@ -7,11 +7,25 @@
 # if user guesses the secret number within the number of guesses print 'well done'
 
 SECRET = 7
+GUESSES_ALLOWED = 4
+
+# Initialise variables
+guesses_left = GUESSES_ALLOWED
+num_won = 0
 guess = ""
 
-while guess != SECRET:
+# Start game
+while guess != SECRET and guesses_left >= 1:
 
     guess = int(input("Guess: "))  # replace this with function call in due course
+    guesses_left -= 1
+
+    # If user has guesses left...
+    if guesses_left >= 1:
+        print()
+    else:
+        print("Sorry you have run out of guesses. You lose")
+        break
 
     if guess < SECRET:
         print("Too low, try a  higher number")
@@ -21,6 +35,3 @@ while guess != SECRET:
         print("Congratulations! You found the secret number")
     print()
 
-    rounds = +1
-    if rounds > 10:
-        print("You have passed the number of rund")
