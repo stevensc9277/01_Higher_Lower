@@ -25,6 +25,9 @@ while guess != SECRET and guesses_left >= 1:
         print("You have {} guesses left".format(guesses_left))
     else:
         print("Sorry you have run out of guesses. You lose ┐(￣ー￣)┌")
+        print()
+        print("The secret number was {}.".format(SECRET))
+
         break
 
     if guess < SECRET:
