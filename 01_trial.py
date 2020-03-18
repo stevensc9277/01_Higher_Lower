@@ -38,6 +38,12 @@ def num_check(question, low=None, high=None):
 SECRET = 7
 GUESSES_ALLOWED = num_check("How many guesses do you want? ")
 
+print("I have chosen a secret number that you have to guess, "
+      "and you only have {} tries. ".format(GUESSES_ALLOWED))
+print("Enter your guess below to start")
+
+print()
+
 # Initialise variables
 guesses_left = GUESSES_ALLOWED
 num_won = 0
@@ -66,4 +72,4 @@ while guess != SECRET and guesses_left >= 1:
         print("Try a lower number.")
         print()
     else:
-        print()
+        print("Congratulations! you found the secret number (☞ﾟヮﾟ)☞")
