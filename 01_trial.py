@@ -37,6 +37,7 @@ def num_check(question, low=None, high=None):
 
 SECRET = 7
 GUESSES_ALLOWED = num_check("How many guesses do you want? ")
+already_guessed = []
 
 print("I have chosen a secret number that you have to guess, "
       "and you only have {} tries. ".format(GUESSES_ALLOWED))
@@ -53,23 +54,31 @@ guess = ""
 while guess != SECRET and guesses_left >= 1:
 
     guess = num_check("Guess: ") # replace this with function call in due course
+    if guess in already_guessed:
+        print("You already guessed that number. Please try again. "
+              "You still have {} guesses left".format(guesses_left))
+        continue
+
+    guesses_left -= 1
+    already_guessed.append(guess)
+
     guesses_left -= 1
 
     # If user has guesses left...
     if guesses_left >= 1:
+
+        if guess < SECRET:
+            print("Too low, try a  higher number.")
+            print()
+        elif guess > SECRET:
+            print("Too high, try a lower number.")
+        else:
+            print("Congratulations, you found the secret number (☞ﾟヮﾟ)☞")
+
         print("You have {} guesses left".format(guesses_left))
+        print()
     else:
         print("Sorry you have run out of guesses. You lose ┐(￣ー￣)┌")
         print()
         print("The secret number was {}.".format(SECRET))
-
         break
-
-    if guess < SECRET:
-        print("Try a  higher number.")
-        print()
-    elif guess > SECRET:
-        print("Try a lower number.")
-        print()
-    else:
-        print("Congratulations! you found the secret number (☞ﾟヮﾟ)☞")
