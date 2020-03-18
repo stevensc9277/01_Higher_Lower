@@ -1,11 +1,4 @@
-# To do
-# Check a lowest is an integer (any integer)
-# Check that highest is more than lowest (lower bound only)
-# Check that rounds is more than 1 (upper bound only)
-# Check that guess is between lowest and highest (1 and 10)
 
-
-# Number checking function goes here
 def num_check(question, low=None, high=None):
 
     # sets up error messages
@@ -39,16 +32,38 @@ def num_check(question, low=None, high=None):
 
         except ValueError:
             print(error)
+            print()
             continue
 
-# Main routine
-low_num = num_check("Low number: ")
-print()
+SECRET = 7
+GUESSES_ALLOWED = num_check("How many guesses do you want? ")
 
-high_num = num_check("High number: ", low_num + 1)
-print()
+# Initialise variables
+guesses_left = GUESSES_ALLOWED
+num_won = 0
+guess = ""
 
-rounds = num_check("Rounds: ", 1)
-print()
-guess = num_check("Guess :", low_num, high_num)
-print()
+# Start game
+while guess != SECRET and guesses_left >= 1:
+
+    guess = num_check("Guess: ") # replace this with function call in due course
+    guesses_left -= 1
+
+    # If user has guesses left...
+    if guesses_left >= 1:
+        print("You have {} guesses left".format(guesses_left))
+    else:
+        print("Sorry you have run out of guesses. You lose ┐(￣ー￣)┌")
+        print()
+        print("The secret number was {}.".format(SECRET))
+
+        break
+
+    if guess < SECRET:
+        print("Try a  higher number.")
+        print()
+    elif guess > SECRET:
+        print("Try a lower number.")
+        print()
+    else:
+        print()

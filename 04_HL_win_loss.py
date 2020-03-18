@@ -7,7 +7,7 @@
 # if user guesses the secret number within the number of guesses print 'well done'
 
 SECRET = 7
-GUESSES_ALLOWED = 4
+GUESSES_ALLOWED = int(input("How many guesses do you want? "))
 
 # Initialise variables
 guesses_left = GUESSES_ALLOWED
@@ -27,12 +27,13 @@ while guess != SECRET and guesses_left >= 1:
         print("Sorry you have run out of guesses. You lose ┐(￣ー￣)┌")
         print()
         print("The secret number was {}.".format(SECRET))
-
         break
 
     if guess < SECRET:
         print("Try a  higher number.")
+        print()
     elif guess > SECRET:
         print("Try a lower number.")
-    else:
         print()
+    else:
+        print("Congratulations, you found the secret number (☞ﾟヮﾟ)☞")
