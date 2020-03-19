@@ -62,8 +62,6 @@ while guess != SECRET and guesses_left >= 1:
     guesses_left -= 1
     already_guessed.append(guess)
 
-    guesses_left -= 1
-
     # If user has guesses left...
     if guesses_left >= 1:
 
