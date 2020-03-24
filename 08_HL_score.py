@@ -46,4 +46,3 @@ while rounds_played < rounds:
 
     print("Won: {} \t | \t Lost: {}".format(num_won, rounds_played - num_won + 1))
     rounds_played += 1
-    break
