@@ -40,14 +40,14 @@ while rounds_played < rounds:
 
     if guess == SECRET:
         if guesses_left == GUESSES_ALLOWED - 1:
-            print("Amazing! You got it in one guess")
+            print("Amazing! You got it in one guess 👌")
             print()
         else:
-            print("Well done, you got it in {} guesses".format(GUESSES_ALLOWED - guesses_left))
+            print("Well done, you got it in {} guesses (☞ﾟヮﾟ)☞".format(GUESSES_ALLOWED - guesses_left))
             print()
         num_won += 1
     else:
-        print("Sorry - you lose this round as you have run out of guesses")
+        print("Sorry - you lose this round as you have run out of guesses (╯°□°）╯︵ ┻━┻")
         guesses_left -= 1
 
     game_stats.append(GUESSES_ALLOWED - guesses_left)
