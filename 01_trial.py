@@ -3,7 +3,7 @@ def num_check(question, low=None, high=None):
 
     # sets up error messages
     if low is not None and high is not None:
-            error = "Please enter an integer between {} and {} " \
+        error = "Please enter an integer between {} and {} " \
                     "(inclusive)".format(low, high)
     elif low is not None and high is None:
         error = "Please enter an integer that is more than or " \
@@ -35,6 +35,7 @@ def num_check(question, low=None, high=None):
             print()
             continue
 
+
 SECRET = 7
 GUESSES_ALLOWED = num_check("How many guesses do you want? ")
 already_guessed = []
@@ -53,7 +54,7 @@ guess = ""
 # Start game
 while guess != SECRET and guesses_left >= 1:
 
-    guess = num_check("Guess: ") # replace this with function call in due course
+    guess = num_check("Guess: ")  # replace this with function call in due course
     if guess in already_guessed:
         print("You already guessed that number. Please try again. "
               "You still have {} guesses left".format(guesses_left))
