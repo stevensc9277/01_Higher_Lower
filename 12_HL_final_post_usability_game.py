@@ -147,8 +147,8 @@ while keep_going == "":
         rounds_played += 1
         print()
         if rounds_played >= 1:
-            SECRET = random.randint(low_num, high_num)
-            already_guessed.clear()
+            SECRET = random.randint(low_num, high_num)      # reset secret number after a round
+            already_guessed.clear()     # Clear list to recycle guess / user input
 
     # Print each round's outcome
     print()
