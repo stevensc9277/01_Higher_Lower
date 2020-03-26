@@ -1,13 +1,8 @@
-too_low = hl_statement("<< Too low, try a higher number.        |   "
-                       "Guesses left: 3 <<", "<")
-print()
-too_high = hl_statement(">> Too high, try a lower number.       |   "
-                        "Guesses left: 2 >>", ">")
-print()
-duplicate = hl_statement("!! You already guessed that # Please try again.       |"
-                         "Guesses left: 2 !!", "!")
-print()
-well_done = hl_statement("*** Well done! You got it in 3 guesses ***", "*")
+keep_going = ""
+while keep_going == "":
 
-print()
-start_round = hl_statement("### Round 1 of 3 ###", "#")
+    print("Rounds played: 1")
+    print("Rounds played: 2")
+    print("Rounds played: 3")
+    keep_going = input("You have gotten to the end of the game. Press <enter> to continue or any key to quit. ")
+print("End")
