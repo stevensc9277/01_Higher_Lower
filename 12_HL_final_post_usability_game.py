@@ -56,108 +56,120 @@ def hl_statement(statement, char):
 keep_going = ""
 while keep_going == "":
 
-        low_num = num_check("Please enter a low number: ")
-        high_num = num_check("Please enter a high number: ")
+    print("**** Welcome to the Higher / Lower Game ****")
+    print()
+    print("To play, enter any number as the minimum value of your range.")
+    print("Then, enter another number as the maximum value of your range.")
+    print("The program will then choose a secret number within your range which you will try to guess.")
+    print()
+    print("You will be given a set amount of guesses for each round depending on your high / low numbers.")
+    print("If you have run out of guesses, then you lose the round.")
+    print("(Please note that the secret number for each round will not stay the same,")
+    print(" and duplicate guesses will not count towards the guesses you have left)")
+    print()
 
-        range = high_num - low_num + 1
-        max_raw = math.log2(range)  # Finds maximum # of guesses using binary search
-        max_upped = math.ceil(max_raw)  # rounds up (ceil --> ceiling)
-        max_guesses = max_upped + 1
-        print("Max Guesses: {}".format(max_guesses))
+    low_num = num_check("Please enter a low number: ")
+    high_num = num_check("Please enter a high number: ")
 
-        print()
+    range = high_num - low_num + 1
+    max_raw = math.log2(range)  # Finds maximum # of guesses using binary search
+    max_upped = math.ceil(max_raw)  # rounds up (ceil --> ceiling)
+    max_guesses = max_upped + 1
+    print("Max Guesses: {}".format(max_guesses))
 
-        SECRET = 7
-        GUESSES_ALLOWED = max_guesses
-        already_guessed = []
-        rounds = num_check("How many rounds do you want to play? ")
-        game_stats = []
-        start = 1
-        num_won = 0
-        rounds_played = 0
+    print()
 
-        while rounds_played < rounds:
-            guess = ""
+    SECRET = random.randint(low_num, high_num)
+    GUESSES_ALLOWED = max_guesses
+    already_guessed = []
+    rounds = num_check("How many rounds do you want to play? ")
+    game_stats = []
+    start = 1
+    num_won = 0
+    rounds_played = 0
 
-            guesses_left = GUESSES_ALLOWED
+    while rounds_played < rounds:
+        guess = ""
 
-            start_round = hl_statement("### Round {} of {} ###".format(start, rounds), "#")
-            start += 1
+        guesses_left = GUESSES_ALLOWED
 
-            while guess != SECRET and guesses_left >= 1:
+        start_round = hl_statement("### Round {} of {} ###".format(start, rounds), "#")
+        start += 1
 
-                guess = num_check("Guess: ")
-                if guess in already_guessed:
-                    duplicate = hl_statement("!! You already guessed that # Please try again.       |   "
-                                             "Guesses left: {} !!".format(guesses_left), "!")
-                    continue
+        while guess != SECRET and guesses_left >= 1:
 
-                guesses_left -= 1
-                already_guessed.append(guess)
+            guess = num_check("Enter your guess: ")
+            if guess in already_guessed:
+                duplicate = hl_statement("!! You already guessed that number Please try again.   ￣へ￣    |   "
+                                         "Guesses left: {} !!".format(guesses_left), "!")
+                continue
 
-                if guesses_left >= 1:
+            guesses_left -= 1
+            already_guessed.append(guess)
 
-                    if guess < SECRET:
-                        too_low = hl_statement("<< Too low, try a higher number.        |   "
-                                               "Guesses left: {} <<".format(guesses_left), "<")
+            if guesses_left >= 1:
 
-                    elif guess > SECRET:
-                        too_high = hl_statement("^^ Too high, try a lower number.       |   "
-                                                "Guesses left: {} ^^".format(guesses_left), "^")
-
-            else:
                 if guess < SECRET:
-                    print("Too low!")
+                    too_low = hl_statement("<< Too low, try a higher number.    ￣へ￣    |   "
+                                            "Guesses left: {} <<".format(guesses_left), "<")
 
                 elif guess > SECRET:
-                    print("Too high!")
+                    too_high = hl_statement("^^ Too high, try a lower number.   ￣へ￣    |   "
+                                            "Guesses left: {} ^^".format(guesses_left), "^")
 
-            if guess == SECRET:
-                if guesses_left == GUESSES_ALLOWED - 1:
-                    print("Amazing! You got it in one guess 👌")
-                    print()
-                else:
-                    well_done = hl_statement("*** Well done! You got it in 3 guesses"
-                                             " ***".format(GUESSES_ALLOWED - guesses_left), "*")
-                    print()
-                num_won += 1
-            else:
-                print("Sorry - you lose this round as you have run out of guesses (╯°□°）╯︵ ┻━┻")
-                print("The secret number was {}".format(SECRET))
+        else:
+            if guess < SECRET:
+                print("Too low!")
+
+            elif guess > SECRET:
+                print("Too high!")
+
+        if guess == SECRET:
+            if guesses_left == GUESSES_ALLOWED - 1:
+                print("Amazing! You got it in one guess (☞ﾟヮﾟ)☞")
                 print()
-                guesses_left -= 1
-
-            game_stats.append(GUESSES_ALLOWED - guesses_left)
-
-            print("Won: {} \t | \t Lost: {}".format(num_won, rounds_played - num_won + 1))
-            rounds_played += 1
+            else:
+                well_done = hl_statement("*** Well done! You got it in {} guesses"
+                                        " ***".format(GUESSES_ALLOWED - guesses_left), "*")
+                print()
+            num_won += 1
+        else:
+            print("Sorry - you lose this round as you have run out of guesses (╯°□°）╯︵ ┻━┻")
+            print("The secret number was {}".format(SECRET))
             print()
-            if rounds_played >= 1:
-                SECRET = random.randint(low_num, high_num)
-                already_guessed.clear()
+            guesses_left -= 1
 
-            # Print each round's outcome
+        game_stats.append(GUESSES_ALLOWED - guesses_left)
+
+        print("Won: {} \t | \t Lost: {}".format(num_won, rounds_played - num_won + 1))
+        rounds_played += 1
         print()
-        print("*** Game Scores ***")
-        list_count = 1
-        for item in game_stats:
-            print("Round {}: {}".format(list_count, item))
-            list_count += 1
+        if rounds_played >= 1:
+            SECRET = random.randint(low_num, high_num)
+            already_guessed.clear()
 
-        # Calculate statistics
-        game_stats.sort()
-        best = game_stats[0]
-        worst = game_stats[-1]
-        average = sum(game_stats) / len(game_stats)
+    # Print each round's outcome
+    print()
+    print("*** Game Scores ***")
+    list_count = 1
+    for item in game_stats:
+        print("Round {}: {}".format(list_count, item))
+        list_count += 1
 
-        print()
-        print("*** Summary Statistics ***")
-        print("Best: {}".format(best))
-        print("Worst: {}".format(worst))
-        print("Average: {:.2f}".format(average))
+    # Calculate statistics
+    game_stats.sort()
+    best = game_stats[0]
+    worst = game_stats[-1]
+    average = sum(game_stats) / len(game_stats)
 
-        print()
-        keep_going = input("Press <enter> to play again or any key to quit: (Note: may need to press enter twice)")
-        print()
+    print()
+    print("*** Summary Statistics ***")
+    print("Best: {}".format(best))
+    print("Worst: {}".format(worst))
+    print("Average: {:.2f}".format(average))
 
-print("Thank you for playing. ( ﾟдﾟ)つ Bye")
+    print()
+    keep_going = input("Press <enter> to play again or any key to quit: ")
+    print()
+
+print("Thank you for playing the Higher / Lower game. ( ﾟдﾟ)つ Bye~~~")
