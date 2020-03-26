@@ -68,8 +68,11 @@ while keep_going == "":
     print(" and duplicate guesses will not count towards the guesses you have left)")
     print()
 
-    low_num = num_check("Please enter a low number: ")
-    high_num = num_check("Please enter a high number: ")
+    low_num = num_check("Please enter your low number: ")
+    high_num = num_check("Please enter a higher number: ")
+    while high_num < low_num:
+        high_num = num_check("Please enter a higher number: ")
+        break
 
     range = high_num - low_num + 1
     max_raw = math.log2(range)  # Finds maximum # of guesses using binary search
