@@ -71,8 +71,7 @@ while keep_going == "":
     low_num = num_check("Please enter your low number: ")
     high_num = num_check("Please enter a higher number: ")
     while high_num < low_num:
-        high_num = num_check("Please enter a higher number: ")
-        break
+        high_num = num_check("Please enter a higher number! ")
 
     range = high_num - low_num + 1
     max_raw = math.log2(range)  # Finds maximum # of guesses using binary search
